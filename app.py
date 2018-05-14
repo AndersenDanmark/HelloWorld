@@ -3,6 +3,7 @@ print("Hello World! Python")
 from flask import Flask
 from flask import send_from_directory
 from flask import request
+import pymysql
 import json
 
 app=Flask(__name__,static_url_path='',static_folder='web/')
@@ -27,5 +28,7 @@ def home():
 if __name__=='__main__':
 
     app.run(host='0.0.0.0',port=8080,debug=True)
+
+conn = pymysql.connect(host='g8r9w9tmspbwmsyo.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', port=3306, user='user', passwd='pw', db='pgcbanobbxjlw9v6')
 
 
