@@ -25,7 +25,13 @@ def home():
     return send_from_directory('','index.html')
 
 conn = pymysql.connect(host='s0znzigqvfehvff5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', port=3306, user='yln2gxt9djlnxre6', passwd='gzkozs8m6j1gfk4h', db='b59xwd91o4xf8moh')
+cur = conn.cursor()
 
+cur.execute("SELECT Host,User FROM user")
+
+print(cur.description)
+
+print()
 
 if __name__=='__main__':
 
