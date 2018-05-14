@@ -24,11 +24,12 @@ def home():
     print('Flask')
     return send_from_directory('','index.html')
 
+conn = pymysql.connect(host='s0znzigqvfehvff5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', port=3306, user='yln2gxt9djlnxre6', passwd='gzkozs8m6j1gfk4h', db='b59xwd91o4xf8moh')
+
 
 if __name__=='__main__':
 
     app.run(host='0.0.0.0',port=8080,debug=True)
 
-conn = pymysql.connect(host='g8r9w9tmspbwmsyo.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', port=3306, user='user', passwd='pw', db='pgcbanobbxjlw9v6')
 
 
