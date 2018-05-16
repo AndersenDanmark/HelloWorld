@@ -26,12 +26,13 @@ def home():
 
 conn = pymysql.connect(host='s0znzigqvfehvff5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com', port=3306, user='yln2gxt9djlnxre6', passwd='gzkozs8m6j1gfk4h', db='b59xwd91o4xf8moh')
 cur = conn.cursor()
+sql="INSERT INTO b59xwd91o4xf8moh.HOUSES (MLS_Number,SQF,Land_Size,Price,Mag_Fees,Year_Built,Sotreys,Bedrooms,Washrooms) VALUES ('C4172305', '1896', '143','504900','0','1990','2','4','4');"
 
-cur.execute("SELECT Host,User FROM user")
+cur.execute(sql)
 
-print(cur.description)
+#cur.execute(print([i [0] for i in cur] [0]))
 
-print()
+
 
 if __name__=='__main__':
 
