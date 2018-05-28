@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[78]:
+# In[130]:
 
 
 import re
@@ -22,10 +22,10 @@ import json
 import pprint
 
 
-# In[79]:
+# In[131]:
 
 
-base_url = "https://www.bloomberg.com"    
+base_url = "http://www.indeed.com/"    
 #change the start_url can scrape different cities.
 start_url = "http://www.indeed.com/jobs?q=data+scientist&l=San+Francisco%2C+CA"
 
@@ -40,13 +40,13 @@ start_soup = BeautifulSoup(resp.content)
 urls = start_soup.findAll('a',{'rel':'nofollow','target':'_blank'}) #this are the links of the job posts
 
 
-# In[80]:
+# In[132]:
 
 
 urls[0]
 
 
-# In[81]:
+# In[133]:
 
 
 #To store all url links to a list called links.
@@ -56,13 +56,13 @@ urls[0]
 #print(urls[0:2])
 
 
-# In[82]:
+# In[134]:
 
 
 urls = [link['href'] for link in urls] 
 
 
-# In[83]:
+# In[135]:
 
 
 # prevent the driver stopping due to the unexpectedAlertBehaviour.
@@ -73,18 +73,18 @@ DRIVER_EXE = r"C:\Users\Andrew Yan\Documents\GitHub\data_skills\geckodriver.exe"
 #the instance of Firefox WebDriver is created.
 
 
-# In[84]:
+# In[136]:
 
 
 driver=webdriver.Firefox(executable_path=DRIVER_EXE)
 
 
-# In[85]:
+# In[137]:
 
 
 # set a page load time limit so that don't have to wait forever if the links are broken.
 driver.set_page_load_timeout(15) 
-for i in range(1): #change it back to for i in range(len(urls)): 
+for i in range(len(urls)): #change it back to for i in range(len(urls)): 
     get_info = True
     try:
         driver.get(base_url+urls[i]) #The driver.get method will navigate to a page given by the URL.
@@ -131,7 +131,10 @@ for i in range(1): #change it back to for i in range(len(urls)):
             "Job Description":job_description.text
             
         }
-        
+
+        with open(r"C:\Users\Andrew Yan\Documents\GitHub\HelloWorld\jobs.json","w") as outfile:
+            json.dump(jobs,outfile)
+ 
         
         print(jobs)
         
@@ -139,85 +142,79 @@ driver.quit()
     
 
 
-# In[87]:
+# In[145]:
 
 
-jobs={
 
-"Job Title":job_title.text,
-"Company Name":company.text,
-"Location":location.text,
-"Url":driver.current_url,
-"Job Description":job_description.text
 
-}
 
-'''
 #build connection
-client = MongoClient('mongodb://127.0.0.1:27017')
+#client = MongoClient('mongodb://127.0.0.1:27017')
 
+client =MongoClient("mongodb://andrewyan:andrewyan!23@ds237660.mlab.com:37660/heroku_zdtgskz7")
 
 #creating a database called jobs_database
-db = client.jobs_database
+db = client.heroku_zdtgskz7
 
 #creating a collection (table) called collection
-collection = db.jobs_collection
+collection = db.datasciencejobs
 
-job_id = db.collection.insert_one(jobs).inserted_id
-collection.find_one({"Job Title": "Data Scientist"})
-'''
+#job_id = db.collection.insert_one(jobs).inserted_id
+#collection.find_one({"Job Title": "Data Scientist"})
 
-def readFromMongoDB(heroku_zdtgskz7, datasciencejobs, ID):
-    
-    ID = int(ID)
-    client =MongoClient("mongodb://andrewyan:andrewyan!23@ds237660.mlab.com:37660/heroku_zdtgskz7")
-    mydb = client[heroku_zdtgskz7]
-    qry = {"ID": ID}
-    obj = mydb[datasciencejobs].find_one(qry,{'_id': False}) # the second parameter {'_id': False} causes the objectID not to be returned
-    #print('Mongo obj:', obj)
-    client.close()
-    return obj
+
+
+def readFromMongoDB(db, collection, ID):
+  
+  ID = int(ID)
+  client =MongoClient("mongodb://andrewyan:andrewyan!23@ds237660.mlab.com:37660/heroku_zdtgskz7")
+  mydb = client[heroku_zdtgskz7]
+  qry = {"ID": ID}
+  obj = mydb[datasciencejobs].find_one(qry,{'_id': False}) # the second parameter {'_id': False} causes the objectID not to be returned
+  #print('Mongo obj:', obj)
+  client.close()
+  return obj
 '''
 {
-    "_id": "heroku_zdtgskz7.andrewyan",
-    "user": "andrewyan",
-    "db": "heroku_zdtgskz7",
-    "roles": [
-        {
-            "role": "dbOwner",
-            "db": "heroku_zdtgskz7"
-        }
-    ]
+  "_id": "heroku_zdtgskz7.andrewyan",
+  "user": "andrewyan",
+  "db": "heroku_zdtgskz7",
+  "roles": [
+      {
+          "role": "dbOwner",
+          "db": "heroku_zdtgskz7"
+      }
+  ]
 }
 
 '''
-def writeToMongoDB(heroku_zdtgskz7, datasciencejobs, ID, jobs):
+def writeToMongoDB(db, collection, ID, jobs):
 
-    ID = int(ID)
-    client =MongoClient("mongodb://andrewyan:andrewyan!23@ds237660.mlab.com:37660/heroku_zdtgskz7")
-    #client = MongoClient("mongodb://localhost:27017/")
+  ID = int(ID)
+  client =MongoClient("mongodb://andrewyan:andrewyan!23@ds237660.mlab.com:37660/heroku_zdtgskz7")
+  #client = MongoClient("mongodb://localhost:27017/")
 
-    # Connect to DB:
-    # mydb = client.heroku_dgltjp2d
-    mydb = client[heroku_zdtgskz7]
+  # Connect to DB:
+  # mydb = client.heroku_dgltjp2d
+  mydb = client[heroku_zdtgskz7]
 
-    obj = json.loads(jobs)
+  obj = json.loads(jobs)
 
-    doc = { "ID":ID, "value" : obj }
-    
-    
-    # if this ID doesnt exist yet, insert a new one
-    #mydb[_tableName].insert_one(doc)
-    
-    # if this ID already exists, we will need to update it with a new value
-    # mycollection.update({'_id':mongo_id}, {"$set": post}, upsert=False)
-    mydb[db].update({ 'ID':ID }, doc, upsert=True )
-    
-    client.close()
+  doc = { "ID":ID, "value" : obj }
+  
+  
+  # if this ID doesnt exist yet, insert a new one
+  #mydb[_tableName].insert_one(doc)
+  
+  # if this ID already exists, we will need to update it with a new value
+  # mycollection.update({'_id':mongo_id}, {"$set": post}, upsert=False)
+  mydb[db].update({ 'ID':ID }, doc, upsert=True )
+  
+  client.close()
 
-    return
+  return
 
-writeToMongoDB(heroku_zdtgskz7, datasciencejobs, ID, jobs)
+
 
 pprint.pprint(collection.find_one())
 
