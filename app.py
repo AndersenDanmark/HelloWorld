@@ -9,7 +9,22 @@ import json
 import pymysql
 import json
 
+#build connection
 
+client =MongoClient("mongodb://andrewyan:andrewyan!23@ds237660.mlab.com:37660/heroku_zdtgskz7")
+
+#creating a database called jobs_database
+db = client.heroku_zdtgskz7
+
+#creating a collection (table) called collection
+collection = db.datasciencejobs
+
+cursor=collection.find({"Company Name":"eBay Inc."})
+job_descriptions={}
+for doc in cursor:
+    job_descriptions=doc
+
+print(job_descriptions)
 
 app=Flask(__name__,static_url_path='',static_folder='web/')
 
@@ -31,29 +46,10 @@ def home():
 
 @app.route('/')
 def getjob():
-    
-       #build connection
-
-    client =MongoClient("mongodb://andrewyan:andrewyan!23@ds237660.mlab.com:37660/heroku_zdtgskz7")
-
-    #creating a database called jobs_database
-    db = client.heroku_zdtgskz7
-
-    #creating a collection (table) called collection
-    collection = db.datasciencejobs
-
-    cursor=collection.find({"Company Name":"eBay Inc."})
-
-    for doc in cursor:
-        job_descriptions=doc
-
-    
     ret=json.dumps(job_descriptions)
 
-    print("Getting job descriptions from MongoDB:")
+    print(ret)
     
-    return ret
-
 if __name__=='__main__':
 
     app.run(host='0.0.0.0',port=8080,debug=True)
