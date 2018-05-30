@@ -23,7 +23,7 @@ def home():
 
     print('Flask')
     return send_from_directory('','index.html')
-
+'''
 conn = pymysql.connect(host='s0znzigqvfehvff5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
                         port=3306, 
                         user='yln2gxt9djlnxre6',
@@ -42,7 +42,7 @@ cur.execute("SELECT * FROM b59xwd91o4xf8moh.HOUSES")
 for row in cur:
   print(row)
 conn.close()
-
+'''
 if __name__=='__main__':
 
     app.run(host='0.0.0.0',port=8080,debug=True)
