@@ -42,15 +42,30 @@ for doc in cursor:
     job_descriptions=doc
 print(job_descriptions)  
 
-print('123')
+
 @app.route('/getjob')
 def getjob():
     ret=json.dumps(job_descriptions)
     print("this is the getjob function")
     return(ret)
     
-getjob()    
-print('456')
+print('123')  
+@app.route('/company/<name>')
+def company(name):
+    print(name)
+    
+    cursor=collection.find({"Company Name":str(name)},{"_id":0})
+    for doc in cursor:
+        xjob_descriptions=doc
+    print(xjob_descriptions)
+
+    ret = json.dumps(xjob_descriptions)
+
+    return ret
+    
+company("Indeed")
+print('456') 
+
 
 if __name__=='__main__':
 
