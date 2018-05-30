@@ -12,4 +12,4 @@ beautifulsoup4==4.6.0
 PyMySQL==0.8.1
 selenium==3.8.0
 json==2.0.9
-csv=1.0
+csv==1.0
