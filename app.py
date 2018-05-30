@@ -36,12 +36,11 @@ db = client.heroku_zdtgskz7
 #creating a collection (table) called collection
 collection = db.datasciencejobs
 
-cursor=collection.find({"Company Name":"eBay Inc."},{"_id":0})
+#This removes the MongoDB ojbect ID, which will cause problem for statements like "ret = json.dumps(xjob_descriptions)"
+cursor=collection.find({},{"_id":0})
 job_descriptions={}
 for doc in cursor:
     job_descriptions=doc
-print(job_descriptions)  
-
 
 @app.route('/getjob')
 def getjob():
@@ -49,22 +48,15 @@ def getjob():
     print("this is the getjob function")
     return(ret)
     
-print('123')  
+ 
 @app.route('/company/<name>')
 def company(name):
-    print(name)
-    
     cursor=collection.find({"Company Name":str(name)},{"_id":0})
     for doc in cursor:
         xjob_descriptions=doc
-    print(xjob_descriptions)
-
     ret = json.dumps(xjob_descriptions)
-
+    print(xjob_descriptions)
     return ret
-    
-company("Indeed")
-print('456') 
 
 
 if __name__=='__main__':
