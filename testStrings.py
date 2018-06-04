@@ -14,11 +14,12 @@ if __name__ == '__main__':
 '''
 s =list(input())
 
-splited=list(s)
-print(splited)
 
-b=sorted(s,reverse=True)
+reversedA=sorted(s,reverse=True)
 print(b)
+
+shuffledA=
+
      
 '''
     result = reverseShuffleMerge(s)
