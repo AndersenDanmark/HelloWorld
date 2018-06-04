@@ -25,7 +25,7 @@ def add():
 def home():
 
     print('Flask')
-    return send_from_directory('','index.html')
+    return send_from_directory('web/','index.html')
 #build connection
 
 client =MongoClient("mongodb://andrewyan:andrewyan!23@ds237660.mlab.com:37660/heroku_zdtgskz7")
