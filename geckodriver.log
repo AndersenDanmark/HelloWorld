@@ -822,3 +822,34 @@ Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\op
 Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
 1528409702026	Marionette	INFO	Listening on port 52002
 1528409702304	Marionette	WARN	TLS certificate errors will be ignored for this session
+1528437051928	geckodriver	INFO	geckodriver 0.20.1
+1528437051935	geckodriver	INFO	Listening on 127.0.0.1:58927
+1528437053929	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ANDREW~1\\AppData\\Local\\Temp\\rust_mozprofile.Eq4rSj9P0l94"
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+1528437055109	Marionette	INFO	Listening on port 58933
+1528437055438	Marionette	WARN	TLS certificate errors will be ignored for this session
+1528437537958	geckodriver	INFO	geckodriver 0.20.1
+1528437537965	geckodriver	INFO	Listening on 127.0.0.1:59094
+1528437539975	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ANDREW~1\\AppData\\Local\\Temp\\rust_mozprofile.sXOmN6bFv3QW"
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+1528437541134	Marionette	INFO	Listening on port 59100
+1528437541484	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://apply.indeed.com/indeedapply/s/078028c030c96a8eb303/scripts/vendor.js, line 1: Error: Loading chunk 0 failed.
+1528437950941	geckodriver	INFO	geckodriver 0.20.1
+1528437950949	geckodriver	INFO	Listening on 127.0.0.1:59266
+1528437952961	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ANDREW~1\\AppData\\Local\\Temp\\rust_mozprofile.8PWAFsm1HaBh"
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\Andrew Yan\AppData\Local\openvr\openvrpaths.vrpath
+1528437954123	Marionette	INFO	Listening on port 59272
+1528437954472	Marionette	WARN	TLS certificate errors will be ignored for this session
