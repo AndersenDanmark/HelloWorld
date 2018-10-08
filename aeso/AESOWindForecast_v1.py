@@ -3,6 +3,9 @@
 Created on Sat Oct  6 16:04:08 2018
 
 @author: Andrew Yan
+
+#ST_WIND_FORECAST_URL needs to be scraped every 10 minutes.
+#LT_WIND_FORECAST_URL needs to be scraped every 6 hours
 """
 
 import pandas as pd
